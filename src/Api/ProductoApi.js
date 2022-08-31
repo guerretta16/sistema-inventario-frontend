@@ -7,4 +7,21 @@ const traerProductos = () => {
     );
 }
 
-export { traerProductos }
+const showProducto = ({id}) => {
+    return (
+        axios.get(`${ENDPOINT}/producto/${id}`)
+    );
+}
+
+const crearProducto = ({data}) => {
+    const configuration = {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        }
+    }
+    return(
+        axios.post(`${ENDPOINT}/producto`, data, configuration)
+    );
+}
+
+export { traerProductos, crearProducto, showProducto }

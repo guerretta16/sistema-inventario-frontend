@@ -7,6 +7,7 @@
     width: 250px;
     border-radius: 15px;
     cursor: pointer;
+    box-shadow: 3px 3px 5px .5px #bdbdbd;
     transition: all 0.5s;
 }
 
@@ -36,14 +37,20 @@
 }
 
 .card_description{
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .card_category{
     margin-bottom: 5px;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .price{
     margin-top: 5px;
+}
+
+@media screen and (min-width: 576px) {
+    .card_container{
+        width: 85%;
+    }
 }

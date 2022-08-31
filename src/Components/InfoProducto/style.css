@@ -1,0 +1,77 @@
+.InfoProducto-container{
+    padding: 20px;
+}
+
+.Producto-title{
+    display: inline-block;
+    color: #24298A;
+}
+
+.space-border{
+    height: 3px;
+    width: 35%;
+    margin-bottom: 30px;
+    border-radius: 2px;
+    background-color: #24298A;
+}
+
+.Producto-desc{
+    margin-bottom: 25px;
+    color: rgb(104, 104, 104);
+    font-size: 13px;
+}
+
+.Producto-extra{
+    background-color: #ffffff;
+    color: #141414;
+    font-size: 13px;
+}
+
+.Producto-cate, .Producto-precio, .Producto-stock, .Producto-disponible, .Producto-noDisponible{
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.span-price{
+    font-size: 18px;
+    color: #24298A;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.Producto-disponible, .Producto-noDisponible{
+    width: 25%;
+    border-top: 2px solid #24298A;
+    margin-top: 25px;
+    padding-top: 5px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.Producto-noDisponible{
+    color: rgb(133, 30, 30);
+    text-decoration: line-through;
+}
+
+.Producto-disponible{
+    color: #24298A;
+}
+
+@media screen and (max-width: 768px) {
+    .InfoProducto-container{
+        margin-top: 35px;
+    }
+
+    .space-border{
+        height: 3px;
+        width: 100%;
+        margin-bottom: 30px;
+        border-radius: 2px;
+        background-color: #24298A;
+    }
+
+    .Producto-disponible, .Producto-noDisponible{
+        width: 50%;
+        margin: 20px auto;
+    }
+}

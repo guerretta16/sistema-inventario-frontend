@@ -1,7 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Layouts/Header/Header';
+import ProductoAdminPage from './Pages/ProductoAdminPage';
 import Home from './Pages/Home';
+import ProductoPage from './Pages/ProductoPage';
 
 function App() {
   return (
@@ -12,8 +14,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/producto'>
-          <Route path=':id'/>
+          <Route path=':id' element={<ProductoPage/>} />
         </Route>
+        <Route path='/producto-admin' element={<ProductoAdminPage/>} />
       </Routes>
 
       {/* Footer */}

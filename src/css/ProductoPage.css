@@ -1,0 +1,15 @@
+.ProductoPage-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .ProductoPage-container{
+        display: grid;
+        grid-template-columns: 65% 35%;
+        align-items: center;
+        text-align: left;
+    }
+}

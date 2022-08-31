@@ -5,10 +5,11 @@ import "./style.css";
 export const CardProducto = ({ producto }) => {
 
   const [fileImg, setFileImg] = React.useState(JSON.parse(producto.image));
+  const [fileName, setFileName] = React.useState(JSON.parse(producto.filename));
 
   return (
     <Link to={`/producto/${producto.id}`} className="card_container">
-      {<img src={`http://localhost:8000${fileImg[0]}`} className="card_img" />}
+      {<img src={`http://localhost:8000${fileImg[0]}`} alt={fileName[0]} className="card_img" />}
       <div className="card_info">
         <h4 className="card_name">{producto.nombre_prod}</h4>
         <hr/><br/>

@@ -1,37 +1,88 @@
-import React, {useState, useEffect} from "react";
-import { traerProductos } from "../Api/ProductoApi";
+import {useState, useEffect} from "react";
+import { traerProductos, crearProducto, showProducto } from "../Api/ProductoApi";
 
 const useProducto = () =>{
 
-    const [productos, setProductos] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [errorLog, setErrorLog] = useState(false);
-    const [saveSuccess, setSaveSuccess] = useState(false);
-    const [messageResponse, setMessageResponse] = useState('');
+    const [productValue, setProductValue] = useState({
+        data: undefined,
+        loading: false,
+        error: undefined,
+    });
 
-    useEffect(() => {
-        setLoading(true);
-        setErrorLog(false);
+    const indexProducto = () => {
+        setProductValue({
+            data: undefined,
+            loading: true,
+            error: undefined,
+        });
         traerProductos()
-        .then(res => {
-            if(res.status === 500){
-                setErrorLog(true);
-                setLoading(false);
-                setMessageResponse('No se tiene permiso');
-            }
-            else{
-                setErrorLog(false);
-                setLoading(false);
-               setProductos(res.data);
-            }
+        .then(response => {
+            setProductValue({
+                data: response.data,
+                loading: false,
+                error: undefined
+            });
         })
-    }, [saveSuccess])
+        .catch(error => {
+            setProductValue({
+                data: undefined,
+                loading: false,
+                error: error.message
+            })
+        })
+    }
+
+    const storeProducto = ({data}) =>{
+        setProductValue({
+            data: undefined,
+            loading: true,
+            error: undefined
+        })
+        crearProducto({data})
+        .then(response => {
+            setProductValue({
+                data: response.data,
+                loading: false,
+                error: undefined
+            })
+        })
+        .catch(error => {
+            setProductValue({
+                data: undefined,
+                loading: false,
+                error: error.message
+            })
+        })
+    }
+
+    const mostrarProducto = ({id}) =>{
+        setProductValue({
+            data: undefined,
+            loading: true,
+            error: undefined,
+        });
+        showProducto({id})
+        .then(response => {
+            setProductValue({
+                data: response.data,
+                loading: false,
+                error: undefined,
+            });
+        })
+        .catch(error => {
+            setProductValue({
+                data: undefined,
+                loading: false,
+                error: error.message,
+            });
+        })
+    }
 
     return {
-        productos,
-        loading,
-        errorLog,
-        messageResponse
+        ...productValue,
+        indexProducto,
+        storeProducto,
+        mostrarProducto,
     }
 }
 
